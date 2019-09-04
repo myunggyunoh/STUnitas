@@ -1,4 +1,6 @@
-package com.example.nmg.stunitas;
+package com.example.nmg.stunitas.RetroFit;
+
+import com.example.nmg.stunitas.Data.SearchData;
 
 import retrofit2.Call;
 import retrofit2.http.Query;
@@ -10,7 +12,7 @@ public interface ApiInterface {
 
     @GET("/v2/search/image.json?")
     @Headers("Authorization: KakaoAK " + key)
-    Call<Data> getSearchImage(
+    Call<SearchData> getSearchImage(
             @Query("query") String method,
             @Query("sort") String sort,
             @Query("page") int page,

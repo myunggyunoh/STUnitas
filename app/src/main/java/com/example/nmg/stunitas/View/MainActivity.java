@@ -1,4 +1,4 @@
-package com.example.nmg.stunitas;
+package com.example.nmg.stunitas.View;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -10,17 +10,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.nmg.stunitas.RetroFit.ApiInterface;
+import com.example.nmg.stunitas.Data.SearchData;
+import com.example.nmg.stunitas.R;
+import com.example.nmg.stunitas.RetroFit.RetrofitClient;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final String DAUM_URL = "https://dapi.kakao.com";
-
     private final String TAG = this.getClass().getSimpleName();
+    private final String DAUM_URL = "https://dapi.kakao.com";
 
     private EditText mSearchTextBar;
     Button button;
@@ -47,8 +50,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    //깃테스트
-
     private void textWatcher() {
         TextWatcher tw = new TextWatcher() {
             @Override
@@ -67,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         mSearchTextBar.addTextChangedListener(tw);
-
     }
 
 
@@ -78,13 +78,13 @@ public class MainActivity extends AppCompatActivity {
         Retrofit retrofit = RetrofitClient.getClient(DAUM_URL);
         ApiInterface retrofitExService = retrofit.create(ApiInterface.class);
 
-        retrofitExService.getSearchImage("나비", "accuracy", 1,  10).enqueue(new Callback<Data>() {
+        retrofitExService.getSearchImage("나비", "accuracy", 1,  10).enqueue(new Callback<SearchData>() {
             @Override
-            public void onResponse(@NonNull Call<Data> call, @NonNull Response<Data> response) {
+            public void onResponse(@NonNull Call<SearchData> call, @NonNull Response<SearchData> response) {
                 if (response.isSuccessful()){
-                    Data data = response.body();
-                    Log.d(TAG,"토탈카운터 : " + data.getMeta().total_count);
-                    Log.d(TAG, "이름 : " + data.documents.get(0).getCollection());
+                    SearchData data = response.body();
+                    Log.d(TAG,"토탈카운터 : " + data.getMeta().getTotal_count());
+                    Log.d(TAG, "이름 : " + data.getDocuments().get(0).getCollection());
                 }else{
                     Log.d(TAG, "Error");
                 }
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<Data > call, Throwable t) {
+            public void onFailure(Call<SearchData> call, Throwable t) {
                 Log.d(TAG, "에러");
             }
         });

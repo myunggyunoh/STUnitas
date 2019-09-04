@@ -1,4 +1,4 @@
-package com.example.nmg.stunitas;
+package com.example.nmg.stunitas.RetroFit;
 
 
 import retrofit2.Retrofit;
@@ -17,7 +17,4 @@ public class RetrofitClient {
         }
         return retrofit;
     }
-
-
-
 }
