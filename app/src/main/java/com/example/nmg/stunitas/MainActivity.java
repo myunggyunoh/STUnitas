@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //깃테스트
 
     private void textWatcher() {
         TextWatcher tw = new TextWatcher() {
