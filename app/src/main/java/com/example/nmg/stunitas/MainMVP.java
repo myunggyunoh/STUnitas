@@ -8,11 +8,13 @@ public class MainMVP {
 
     public interface Presenter {
         void loadData(String text);
+        void loadAddData(String text);
         void createModel();
     }
 
     public interface View {
-        void completed(List<documents> list);
+        void search(List<documents> list);
+        void addList(List<documents> list);
     }
 
 }
