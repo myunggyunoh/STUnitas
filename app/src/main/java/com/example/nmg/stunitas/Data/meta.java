@@ -2,9 +2,9 @@ package com.example.nmg.stunitas.Data;
 
 public class meta {
 
-    int total_count;
-    int pageable_count;
-    boolean is_end;
+    private int total_count;
+    private int pageable_count;
+    private boolean is_end;
 
 
     public int getTotal_count() {

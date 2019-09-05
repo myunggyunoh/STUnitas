@@ -9,12 +9,12 @@ public class MainMVP {
     public interface Presenter {
         void loadData(String text);
         void loadAddData(String text);
-        void createModel();
     }
 
     public interface View {
         void search(List<documents> list);
         void addList(List<documents> list);
+        void errorToast(String text);
     }
 
 }
