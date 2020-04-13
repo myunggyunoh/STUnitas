@@ -1,4 +1,4 @@
-package com.example.nmg.stunitas.Adapter;
+package com.example.nmg.stunitas.Main.MainRecyclerHolder;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

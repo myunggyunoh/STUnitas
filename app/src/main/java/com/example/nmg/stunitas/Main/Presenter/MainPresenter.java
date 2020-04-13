@@ -1,11 +1,10 @@
-package com.example.nmg.stunitas.Presenter;
+package com.example.nmg.stunitas.Main.Presenter;
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.example.nmg.stunitas.Data.SearchData;
 import com.example.nmg.stunitas.Data.documents;
-import com.example.nmg.stunitas.MainMVP;
+import com.example.nmg.stunitas.Main.MainMVP;
 import com.example.nmg.stunitas.RetroFit.ApiInterface;
 import com.example.nmg.stunitas.RetroFit.RetrofitClient;
 
@@ -40,7 +39,10 @@ public class MainPresenter implements MainMVP.Presenter {
     private TimerTask mTask;
     private Timer mTimer;
 
-    public MainPresenter(MainMVP.View view){
+    public MainPresenter(){
+    }
+
+    public void setMainView(MainMVP.View view) {
         this.view = view;
     }
 

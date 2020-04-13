@@ -1,4 +1,4 @@
-package com.example.nmg.stunitas.View;
+package com.example.nmg.stunitas.Main.View;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
@@ -10,10 +10,10 @@ import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.nmg.stunitas.Adapter.RecyclerAdapter;
+import com.example.nmg.stunitas.Main.Adapter.RecyclerAdapter;
 import com.example.nmg.stunitas.Data.documents;
-import com.example.nmg.stunitas.MainMVP;
-import com.example.nmg.stunitas.Presenter.MainPresenter;
+import com.example.nmg.stunitas.Main.MainMVP;
+import com.example.nmg.stunitas.Main.Presenter.MainPresenter;
 import com.example.nmg.stunitas.R;
 
 import java.util.List;
@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements MainMVP.View{
 
     private final String TAG = this.getClass().getSimpleName();
 
-    private MainPresenter presenter;
+    private MainPresenter mainPresenter;
 
     private EditText mSearchTextBar;
 
@@ -37,7 +37,8 @@ public class MainActivity extends AppCompatActivity implements MainMVP.View{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        presenter = new MainPresenter(this);
+        mainPresenter = new MainPresenter();
+        mainPresenter.setMainView(this);
         mContext = this;
 
         init();
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements MainMVP.View{
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                presenter.loadData(charSequence.toString());
+                mainPresenter.loadData(charSequence.toString());
             }
 
             @Override
@@ -82,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements MainMVP.View{
                 int lastVisibleItemPosition = ((LinearLayoutManager) recyclerView.getLayoutManager()).findLastCompletelyVisibleItemPosition();
                 int itemTotalCount = recyclerView.getAdapter().getItemCount() - 1;
                 if (lastVisibleItemPosition == itemTotalCount) {
-                    presenter.loadAddData(mSearchTextBar.getText().toString());
+                    mainPresenter.loadAddData(mSearchTextBar.getText().toString());
                 }
             }
         });

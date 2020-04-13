@@ -1,4 +1,4 @@
-package com.example.nmg.stunitas;
+package com.example.nmg.stunitas.Main;
 
 import com.example.nmg.stunitas.Data.documents;
 
