@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.nmg.stunitas.Data.documents;
-import com.example.nmg.stunitas.Main.MainRecyclerHolder.ImageHolder;
-import com.example.nmg.stunitas.Main.MainRecyclerHolder.MainHolder;
+import com.example.nmg.stunitas.Main.RecyclerHolder.ImageHolder;
+import com.example.nmg.stunitas.Main.RecyclerHolder.MainHolder;
 import com.example.nmg.stunitas.R;
 
 import java.util.List;
